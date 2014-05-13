@@ -20,7 +20,7 @@ var app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 
-app.post('/save', function (req, res, next) {
+app.post('/object', function (req, res, next) {
 	console.log(req.body);
 	if(!req.body || Object.keys(req.body).length === 0){
 		next(new Error('Missing Arguments!'));
@@ -35,7 +35,7 @@ app.post('/save', function (req, res, next) {
 	}
 });
 
-app.get('/all', function (req, res, next) {
+app.get('/objects', function (req, res, next) {
 	COLLECTION.find().toArray(function (err, result) {
 		if(err){
 			next(err);
